@@ -1,0 +1,1072 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* CSS Variables */
+:root {
+    --primary-pink: #FF69B4;
+    --light-pink: #FFB6C1;
+    --deep-pink: #FF1493;
+    --white: #FFFFFF;
+    --soft-white: #FAFAFA;
+    --text-dark: #2C2C2C;
+    --text-light: #666666;
+    --shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+    --shadow-hover: 0 15px 40px rgba(255, 105, 180, 0.4);
+    --gradient-primary: linear-gradient(135deg, #FF69B4 0%, #FFB6C1 100%);
+    --gradient-secondary: linear-gradient(45deg, #FFB6C1 0%, #FF69B4 50%, #FF1493 100%);
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+    background: var(--gradient-primary);
+    overflow-x: hidden;
+    position: relative;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Wrapper */
+#wrapper {
+    position: relative;
+    min-height: 100vh;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+    background-size: 50px 50px;
+}
+
+/* Floating Balloons */
+.floating-balloons {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.balloon {
+    position: absolute;
+    font-size: 2rem;
+    animation: floatBalloon 6s ease-in-out infinite;
+    opacity: 0;
+    animation-delay: var(--delay);
+}
+
+.balloon-1 { 
+    left: 10%; 
+    top: 20%; 
+    --delay: 1s; 
+    color: var(--primary-pink);
+}
+
+.balloon-2 { 
+    left: 80%; 
+    top: 30%; 
+    --delay: 2s; 
+    color: var(--deep-pink);
+}
+
+.balloon-3 { 
+    left: 20%; 
+    top: 70%; 
+    --delay: 3s; 
+    color: var(--light-pink);
+}
+
+.balloon-4 { 
+    left: 90%; 
+    top: 60%; 
+    --delay: 4s; 
+    color: var(--primary-pink);
+}
+
+.balloon-5 { 
+    left: 50%; 
+    top: 10%; 
+    --delay: 5s; 
+    color: var(--deep-pink);
+}
+
+@keyframes floatBalloon {
+    0% { 
+        opacity: 0; 
+        transform: translateY(50px) rotate(0deg); 
+    }
+    20% { 
+        opacity: 1; 
+    }
+    80% { 
+        opacity: 1; 
+    }
+    100% { 
+        opacity: 0; 
+        transform: translateY(-50px) rotate(10deg); 
+    }
+}
+
+/* Confetti Animation */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--primary-pink);
+    animation: confettiFall 3s linear infinite;
+    animation-delay: var(--delay);
+}
+
+.confetti-1 { left: 10%; --delay: 0s; background: var(--primary-pink); }
+.confetti-2 { left: 20%; --delay: 0.5s; background: var(--light-pink); }
+.confetti-3 { left: 30%; --delay: 1s; background: var(--deep-pink); }
+.confetti-4 { left: 40%; --delay: 1.5s; background: var(--primary-pink); }
+.confetti-5 { left: 60%; --delay: 2s; background: var(--light-pink); }
+.confetti-6 { left: 70%; --delay: 2.5s; background: var(--deep-pink); }
+.confetti-7 { left: 80%; --delay: 3s; background: var(--primary-pink); }
+.confetti-8 { left: 90%; --delay: 3.5s; background: var(--light-pink); }
+
+@keyframes confettiFall {
+    0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* Birthday Cake */
+.birthday-cake {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    z-index: 3;
+    animation: cakeAppear 2s ease-out 4s both;
+}
+
+@keyframes cakeAppear {
+    0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.cake-base {
+    position: relative;
+    width: 80px;
+    height: 60px;
+}
+
+.cake-layer {
+    position: absolute;
+    border-radius: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.layer-1 {
+    bottom: 0;
+    width: 70px;
+    height: 25px;
+    background: var(--gradient-secondary);
+    border: 2px solid var(--deep-pink);
+}
+
+.layer-2 {
+    bottom: 20px;
+    width: 60px;
+    height: 20px;
+    background: var(--gradient-primary);
+    border: 2px solid var(--primary-pink);
+}
+
+.layer-3 {
+    bottom: 35px;
+    width: 50px;
+    height: 15px;
+    background: linear-gradient(45deg, var(--light-pink), var(--primary-pink));
+    border: 2px solid var(--light-pink);
+}
+
+.candles {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.candle {
+    width: 4px;
+    height: 15px;
+    background: #FFD700;
+    border-radius: 2px;
+    position: relative;
+}
+
+.flame {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 8px;
+    background: radial-gradient(circle, #FF6B35 0%, #F7931E 70%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+    0% { transform: translateX(-50%) scale(1) rotate(-1deg); }
+    100% { transform: translateX(-50%) scale(1.1) rotate(1deg); }
+}
+
+/* Main Content */
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    z-index: 4;
+}
+
+/* Left Section */
+.left-section {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.title-container {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.happy-text,
+.birthday-text {
+    display: block;
+    font-size: 4rem;
+    line-height: 1;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.happy-text {
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.birthday-text {
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.happy-text span,
+.birthday-text span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(50px) rotateX(90deg);
+    animation: letterAnimation 0.8s var(--t) cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes letterAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) rotateX(90deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg);
+    }
+}
+
+/* Party Hat */
+.party-hat {
+    position: absolute;
+    top: -50px;
+    right: -30px;
+    animation: hatAnimation 3s ease-in-out 3s both;
+}
+
+.hat-cone {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid var(--primary-pink);
+    position: relative;
+}
+
+.hat-cone::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: -25px;
+    width: 50px;
+    height: 8px;
+    background: var(--deep-pink);
+    border-radius: 4px;
+}
+
+.hat-pom {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 15px;
+    background: var(--white);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes hatAnimation {
+    0% { transform: translateY(-100px) rotate(-180deg); opacity: 0; }
+    50% { transform: translateY(10px) rotate(10deg); opacity: 1; }
+    100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+}
+
+/* Date Display */
+.date-display {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 105, 180, 0.3);
+    opacity: 0;
+    animation: slideUp 1s ease-out 6s both;
+}
+
+.date-display i {
+    color: var(--primary-pink);
+    font-size: 1.2rem;
+    animation: starTwinkle 2s ease-in-out infinite;
+}
+
+.date-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    min-width: 140px;
+}
+
+@keyframes starTwinkle {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+}
+
+@keyframes slideUp {
+    0% { transform: translateY(50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Action Button */
+.action-button {
+    opacity: 0;
+    animation: bounceIn 1s ease-out 8s both;
+}
+
+.btn-primary {
+    background: var(--gradient-secondary);
+    border: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--shadow);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-primary:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.btn-primary.sparkle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: sparkleEffect 0.6s ease-in-out;
+}
+
+@keyframes sparkleEffect {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.btn-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3) rotate(-10deg); opacity: 0; }
+    50% { transform: scale(1.1) rotate(5deg); opacity: 0.8; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Right Section */
+.right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.profile-container {
+    position: relative;
+    margin-bottom: 3rem;
+    animation: profileSlide 2s ease-out 5s both;
+}
+
+@keyframes profileSlide {
+    0% { transform: translateX(100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+.profile-image {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid var(--white);
+    box-shadow: var(--shadow);
+    background: var(--gradient-primary);
+    padding: 6px;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.image-glow {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border-radius: 50%;
+    background: var(--gradient-secondary);
+    z-index: -1;
+    animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 20px rgba(255, 105, 180, 0.3); }
+    100% { box-shadow: 0 0 40px rgba(255, 105, 180, 0.6); }
+}
+
+.name-badge {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: var(--shadow);
+    border: 2px solid rgba(255, 105, 180, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.name-badge span {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.name-badge i {
+    color: var(--primary-pink);
+    animation: heartPulse 2s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Floating Hearts */
+.floating-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.floating-hearts i {
+    position: absolute;
+    color: var(--primary-pink);
+    animation: floatHeart 4s ease-in-out infinite;
+    opacity: 0;
+}
+
+.heart-1 {
+    top: 10%;
+    left: 10%;
+    animation-delay: 1s;
+    font-size: 1.2rem;
+}
+
+.heart-2 {
+    top: 20%;
+    right: 15%;
+    animation-delay: 2s;
+    font-size: 0.8rem;
+}
+
+.heart-3 {
+    bottom: 30%;
+    left: 20%;
+    animation-delay: 3s;
+    font-size: 1rem;
+}
+
+.heart-4 {
+    bottom: 15%;
+    right: 10%;
+    animation-delay: 4s;
+    font-size: 1.1rem;
+}
+
+@keyframes floatHeart {
+    0% { opacity: 0; transform: translateY(20px) scale(0.8); }
+    25% { opacity: 1; transform: translateY(0) scale(1); }
+    75% { opacity: 1; transform: translateY(-10px) scale(1.1); }
+    100% { opacity: 0; transform: translateY(-30px) scale(0.8); }
+}
+
+/* Rotating Circle */
+.rotating-circle {
+    position: absolute;
+    top: 50px;
+    right: -50px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: circleAppear 2s ease-out 9s both;
+}
+
+@keyframes circleAppear {
+    0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.circle-text {
+    width: 100px;
+    height: 100px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    border: 4px solid var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: rotateCircle 10s linear infinite;
+    box-shadow: var(--shadow);
+}
+
+@keyframes rotateCircle {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.circle-text span {
+    position: absolute;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    transform: rotate(calc(var(--i) * 24deg));
+    transform-origin: 0 50px;
+    top: 0;
+    left: 50%;
+}
+
+.rotating-circle > i {
+    position: absolute;
+    color: var(--deep-pink);
+    font-size: 1.5rem;
+    z-index: 2;
+    animation: iconSpin 3s ease-in-out infinite;
+}
+
+@keyframes iconSpin {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+}
+
+/* Birthday Modal - Original Card Design with Pink Theme */
+.birthday-modal {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0.3);
+    visibility: hidden;
+    transition: all 0.5s;
+    z-index: 1000;
+}
+
+.birthday-modal.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.modal-content {
+    position: absolute;
+    width: 750px;
+    height: 500px;
+    display: flex;
+    margin: 0;
+    transform: scale(0.9);
+    -webkit-perspective: 2000px;
+    perspective: 2000px;
+    transition: all 0.5s;
+}
+
+.modal-content:hover {
+    transform: rotate(-5deg);
+    filter: drop-shadow(0 0 10px var(--primary-pink));
+}
+
+.modal-content:hover .card1 {
+    transform: translate(-187px, -250px) rotateY(-140deg);
+}
+
+.card1,
+.card2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--light-pink);
+}
+
+.card1 {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: var(--gradient-primary);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: all 1s ease-in-out;
+}
+
+.card1 .userImg {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.card1 .userImg img {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.card1 .imageCute {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+    background-color: white;
+}
+
+.card1 .imageCute img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card1 h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    text-transform: uppercase;
+    width: 80%;
+    text-align: center;
+    line-height: 1.5;
+    letter-spacing: 5px;
+    transform: rotate(-5deg);
+    text-shadow: 0 0 5px white, 0 0 10px white;
+}
+
+.card1 h4 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.card1 .username {
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.card2 {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, var(--light-pink), #ffffff 30%);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: all 1s;
+}
+
+.card2 .card2-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: var(--primary-pink);
+    transition: all 1s;
+    overflow: hidden;
+    font-family: "Inter", serif;
+    color: #fff;
+}
+
+.modal-content:hover .card2-content {
+    transform: translate(20px, 20px);
+    box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.card2 h3 {
+    font-family: 'Dancing Script', cursive;
+    padding: 20px 0px 10px 60px;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 25px;
+    text-shadow: 0 0 8px var(--deep-pink);
+}
+
+.card2:hover h3 {
+    animation: texth3 3s forwards;
+    animation-delay: 2s;
+    transition: 1s;
+}
+
+@keyframes texth3 {
+    0% {
+        opacity: 1;
+        visibility: visible;
+        padding: 20px 0px 10px 60px;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+        padding: 20px 0px 10px 152px;
+    }
+}
+
+.card2 h2 {
+    font-family: 'Dancing Script', cursive;
+    padding: 0px 20px;
+    text-indent: 20px;
+    font-size: 22px;
+    opacity: 0;
+}
+
+.card2:hover h2 {
+    animation: texth2 2s forwards;
+    animation-delay: 4s;
+    transition: 1s;
+}
+
+@keyframes texth2 {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.card2 .card2-content .imageCute2 {
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    opacity: 0;
+    transition: 1s;
+}
+
+.card2 .card2-content:hover .imageCute2 {
+    animation: cute3 1s linear infinite, cute4 3s 2s forwards;
+    animation-delay: 2s;
+    transition: 1s;
+}
+
+@keyframes cute3 {
+    0% { opacity: 1; transform: rotate(0deg); }
+    25% { opacity: 1; transform: rotate(5deg); }
+    50% { opacity: 1; transform: rotate(0deg); }
+    75% { opacity: 1; transform: rotate(-5deg); }
+    100% { opacity: 1; transform: rotate(0deg); }
+}
+
+@keyframes cute4 {
+    0% { left: 20px; }
+    100% { left: 100px; }
+}
+
+.card2 .card2-content .imageCute2 img {
+    width: 40px;
+}
+
+.close-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    font-size: 30px;
+    padding: 10px 25px;
+    cursor: pointer;
+    color: white;
+    z-index: 10000000000000000;
+    background: none;
+    border: none;
+}
+
+.close-modal:hover {
+    color: var(--light-pink);
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 2rem;
+    }
+    
+    .left-section,
+    .right-section {
+        width: 100%;
+        max-width: none;
+    }
+    
+    .happy-text,
+    .birthday-text {
+        font-size: 2.5rem;
+    }
+    
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .birthday-cake {
+        top: 20px;
+        right: 20px;
+        transform: scale(0.8);
+    }
+    
+    .rotating-circle {
+        position: relative;
+        top: 20px;
+        right: 0;
+        margin-top: 2rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+    
+    .modal-title {
+        font-size: 1.8rem;
+    }
+    
+    .message-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .happy-text,
+    .birthday-text {
+        font-size: 2rem;
+    }
+    
+    .date-text {
+        font-size: 1.4rem;
+    }
+    
+    .btn-primary {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .birthday-cake {
+        transform: scale(0.6);
+    }
+    
+    .floating-balloons .balloon {
+        font-size: 1.5rem;
+    }
+    
+    .modal-content {
+        padding: 1rem;
+    }
+    
+    .message-text {
+        font-size: 1rem;
+    }
+}
+
+/* Additional Animations for Enhanced Experience */
+@keyframes pulseGlow {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 40px rgba(255, 105, 180, 0.6);
+        transform: scale(1.02);
+    }
+}
+
+/* Custom Scrollbar */
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: var(--light-pink);
+    border-radius: 3px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--primary-pink);
+    border-radius: 3px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: var(--deep-pink);
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus States for Accessibility */
+.btn-primary:focus,
+.close-modal:focus {
+    outline: 3px solid var(--deep-pink);
+    outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+    .floating-balloons,
+    .confetti-container,
+    .birthday-modal {
+        display: none;
+    }
+    
+    body {
+        background: white;
+    }
+    
+    .content {
+        color: black;
+    }
+}
